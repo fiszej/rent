@@ -20,9 +20,9 @@ if ($_POST['submit']) {
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Post Category</label>
             <select class="form-select form-select-sm" name="category" aria-label="Default select example">
-                <option value="1">Daily</option>
-                <option value="2">Luxurious</option>
-                <option value="3">Electric</option>
+                <?php foreach ($category->show() as $category) :?>
+                    <option value="<?= $category->id?>"><?= $category->name ?></option>
+                <?php endforeach ?>
             </select>
     </div>
 

@@ -25,15 +25,15 @@ if ($_POST['submit']) {
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Post Category</label>
             <select class="form-select form-select-sm" name="category" aria-label="Default select example">
-                <option value="1">Daily</option>
-                <option value="2">Luxurious</option>
-                <option value="3">Electric</option>
+            <?php foreach ($category->show() as $category) :?>
+                    <option value="<?= $category->id?>"><?= $category->name ?></option>
+                <?php endforeach ?>
             </select>
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Text</label>
         <textarea class="form-control form-control-sm" name="text" id="exampleFormControlTextarea1" rows="3">
-            <?= $post->text ?>
+            <?= $row->text ?>
         </textarea>
     </div>
     <div class="col-12">

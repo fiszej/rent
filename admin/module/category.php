@@ -1,7 +1,7 @@
 
 <?php
 
-$result = $category->showCategories();
+$result = $category->show();
 
 
 if (array_key_exists('submit', $_POST)) {
@@ -29,10 +29,10 @@ if (isset($_GET['action'])) {
   <tbody>
       <?php foreach ($result as $category) : ?>
     <tr>
-      <th scope="row"><?= $category->category_id ?></th>
+      <th scope="row"><?= $category->id ?></th>
         <td><?= $category->name ?></td>
         <td>
-            <a href="index.php?admin=category&action=delete&id=<?= $category->category_id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="index.php?admin=category&action=delete&id=<?= $category->id ?>" class="btn btn-danger btn-sm">Delete</a>
         </td>
       </tr>
     <?php endforeach ;?>

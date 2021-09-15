@@ -34,9 +34,9 @@ class Category
         }
     }
 
-    public function showCategories()
+    public function show()
     {
-        $sql = "SELECT * FROM category";
+        $sql = "SELECT category_id AS id, name FROM category";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
