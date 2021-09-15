@@ -1,9 +1,6 @@
 <?php
 
-$sql = "SELECT * FROM posts";
-$stmt = $db->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+$result = $post->showAll();
 
 ?>
 
@@ -29,7 +26,6 @@ $result = $stmt->fetchAll(PDO::FETCH_OBJ);
             <a href="index.php?admin=edit-post&id=<?= $post->id ?>" class="btn btn-info btn-sm">Edit</a>
             <a href="index.php?admin=delete-post&id=<?= $post->id ?>" class="btn btn-danger btn-sm">Delete</a>
         </td>
-
       </tr>
     <?php endforeach ;?>
   </tbody>

@@ -1,34 +1,17 @@
 <?php
 
-// if (empty($_GET['id'])) {
-//     header("Location: index.php?page=posts");
-// } 
 if ($_GET['id']) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM posts WHERE id = :id";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $post = $stmt->fetch(PDO::FETCH_OBJ);
-    $stmt->closeCursor();
+    $row = $post->readOne($id);
 }
 
 if ($_POST['submit']) {
-
-    $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
-    $text = trim(filter_input(INPUT_POST, 'text', FILTER_SANITIZE_SPECIAL_CHARS));
-    $category = $_POST['category'];
-    $id = $_POST['id'];
-
-    try {
-        $sql = sprintf("UPDATE posts SET category= '%s', title= '%s', text= '%s' WHERE id = %d", $category, $title, $text, $id);
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-
-        //header("Location: index.php?admin=posts");
-    } catch (Exception $e) {
-        echo 'Error add post'. $e->getMessage();
-    }
+    $post->title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
+    $post->text = trim(filter_input(INPUT_POST, 'text', FILTER_SANITIZE_SPECIAL_CHARS));
+    $post->categoryId = $_POST['category'];
+    $post->id = $_POST['id'];
+    $post->update();
+    header("Location: index.php?admin=posts");
 }
 
 ?>
@@ -36,8 +19,8 @@ if ($_POST['submit']) {
 <form action="index.php?admin=edit-post" method="POST">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Post Title</label>
-        <input type="text" class="form-control form-control-sm" name ="title" id="exampleFormControlInput1" value="<?= $post->title ?>">
-        <input type="hidden" name="id" value="<?= $post->id?>">
+        <input type="text" class="form-control form-control-sm" name ="title" id="exampleFormControlInput1" value="<?= $row->title ?>">
+        <input type="hidden" name="id" value="<?= $row->id?>">
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Post Category</label>

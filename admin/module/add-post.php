@@ -2,19 +2,12 @@
 
 if ($_POST['submit']) {
 
-    $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
-    $text = trim(filter_input(INPUT_POST, 'text', FILTER_SANITIZE_SPECIAL_CHARS));
-    $category = $_POST['category'];
-
-
-    try {
-        $sql = "INSERT INTO posts (category, title, text) VALUES ('$category', '$title', '$text')";
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-        header("Location: index.php?admin=posts");
-    } catch (Exception $e) {
-        echo 'Error add post'. $e->getMessage();
-    }
+    $post->title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
+    $post->text = trim(filter_input(INPUT_POST, 'text', FILTER_SANITIZE_SPECIAL_CHARS));
+    $post->categoryId = $_POST['category'];
+    $post->userId = 1;
+    $post->save();
+    header("Location: index.php?admin=posts");
 
 }
 ?>
