@@ -6,7 +6,7 @@ $result = $category->show();
 
 if (array_key_exists('submit', $_POST)) {
     $category->name = trim(filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_SPECIAL_CHARS));
-    $category->id = $category->lastId()['category_id'] + 1;
+    //$category->id = $category->lastId()['category_id'] + 1;
     $category->new();
     header("Location: index.php?admin=category");
 }

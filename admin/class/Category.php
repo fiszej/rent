@@ -14,7 +14,7 @@ class Category
     public function new()
     {
         try {
-            $sql = "INSERT INTO category SET name = '$this->name', category_id = $this->id";
+            $sql = "INSERT INTO category SET name = '$this->name'";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
         } catch (Exception $e) {
@@ -25,7 +25,7 @@ class Category
     public function delete($id)
     {
         try {
-            $sql = "DELETE FROM category WHERE category_id = :id";
+            $sql = "DELETE FROM category WHERE id = :id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -36,7 +36,7 @@ class Category
 
     public function show()
     {
-        $sql = "SELECT category_id AS id, name FROM category";
+        $sql = "SELECT id, name FROM category";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -44,7 +44,7 @@ class Category
 
     public function lastId()
     {
-        $sql = "SELECT category_id FROM category";
+        $sql = "SELECT id FROM category";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -8,6 +8,7 @@ class Post
     public $categoryId;
     public $createdAt;
     public $userId;
+    public $foto;
 
     private $pdo;
 
@@ -18,13 +19,20 @@ class Post
     public function save()
     {
         try {
-            $sql = "INSERT INTO posts (category_id, title, text, user_id) VALUES (:category, :title, :text , :user_id)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':category', $this->categoryId, PDO::PARAM_INT);
-            $stmt->bindParam(':title', $this->title, PDO::PARAM_STR);
-            $stmt->bindParam(':text', $this->text, PDO::PARAM_STR);
-            $stmt->bindParam(':user_id', $this->userId, PDO::PARAM_INT);
+            $sql = sprintf("INSERT INTO posts (
+                                title, 
+                                text, 
+                                category_id, 
+                                user_id, 
+                                foto) VALUES (
+                                '%s', '%s', %d, %d, '%s')",
+                                $this->title,
+                                $this->text,
+                                $this->categoryId,
+                                $this->userId,
+                                $this->foto);
             
+            $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -78,11 +86,17 @@ class Post
 
     public function showAll()
     {
-        $sql = "SELECT * FROM posts";
+        $sql = "SELECT 
+                posts.id, 
+                posts.title, 
+                posts.text, 
+                posts.created_at, 
+                posts.foto,
+                category.name AS cname 
+                FROM posts INNER JOIN category 
+                ON posts.category_id = category.id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
-
 }
