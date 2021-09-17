@@ -10,11 +10,12 @@
 </head>
 <body>
     <nav class="nav">
-        <a class="nav-link active" aria-current="page" href="index.php?admin=index">Home</a>
-        <a class="nav-link" href="index.php?admin=posts">Posts</a>
-        <a class="nav-link" href="index.php?admin=cars">Cars</a>
-        <a class="nav-link" href="index.php?admin=category">Categories</a>
-        <a class="nav-link" href="index.php?admin=customers">Customers</a>
+        <a class="nav-link" <?= $_GET['admin'] == 'index' ? 'style="color: black"' : '' ?> aria-current="page" href="index.php?admin=index">Home</a>
+        <a class="nav-link" <?= $_GET['admin'] == 'cars' ? 'style="color: black"' : '' ?>href="index.php?admin=cars">Cars</a>
+        <a class="nav-link" <?= $_GET['admin'] == 'rentals' ? 'style="color: black"' : '' ?> href="index.php?admin=rentals">Rentals</a>
+        <a class="nav-link" <?= $_GET['admin'] == 'customers' ? 'style="color: black"' : '' ?>href="index.php?admin=customers">Customers</a>
+        <a class="nav-link" <?= $_GET['admin'] == 'category' ? 'style="color: black"' : '' ?>href="index.php?admin=category">Categories</a>
+        <a class="nav-link" <?= $_GET['admin'] == 'posts' ? 'style="color: black"' : '' ?>href="index.php?admin=posts">Posts</a>
     </nav>
     <hr>
     <div class="container">

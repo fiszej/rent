@@ -24,12 +24,12 @@ $result = $post->showAll();
         <td><?= $post->created_at ?></td>
         <td><i class="<?= $post->foto ? 'bi bi-camera2 text-success' : 'bi bi-camera2 text-danger'?>"></i></td>
         <td>
-            <a href="index.php?admin=show-post&id=<?= $post->id ?>" class="btn btn-success btn-sm">Show</a>
-            <a href="index.php?admin=edit-post&id=<?= $post->id ?>" class="btn btn-info btn-sm">Edit</a>
-            <a href="index.php?admin=delete&page=posts&id=<?= $post->id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="index.php?admin=show-post&id=<?= $post->id ?>" class="btn btn-outline-success btn-sm">Show</a>
+            <a href="index.php?admin=edit-post&id=<?= $post->id ?>" class="btn btn-outline-primary btn-sm">Edit</a>
+            <a href="index.php?admin=delete&page=posts&id=<?= $post->id ?>" class="btn btn-outline-danger btn-sm">Delete</a>
         </td>
       </tr>
     <?php endforeach ;?>
   </tbody>
 </table>
-<a href="index.php?admin=add-post" class="btn btn-success btn-sm"> + </a>
+<a href="index.php?admin=add-post" class="btn btn-outline-primary btn-sm"> + </a>

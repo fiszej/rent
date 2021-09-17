@@ -23,20 +23,20 @@ if (isset($_POST['submit'])) {
     <h1 style="text-align: center;">ADD NEW CAR</h1>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Brand</label>
-        <input type="text" class="form-control form-control-sm" name ="brand" id="exampleFormControlInput1">
+        <input type="text" class="form-control form-control-sm" name ="brand" autocomplete="off">
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Model</label>
-        <input type="text" class="form-control form-control-sm" name ="model" id="exampleFormControlInput1">
+        <input type="text" class="form-control form-control-sm" name ="model" autocomplete="off">
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Production</label>
-        <input type="text" class="form-control form-control-sm" value="np.2021" name ="production" id="exampleFormControlInput1">
+        <input type="text" class="form-control form-control-sm" value="np.2021" name ="production" autocomplete="off">
     </div>
     <div class="mb-3">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Price</label>
-        <input type="text" class="form-control form-control-sm" name ="price" id="exampleFormControlInput1">
+        <input type="text" class="form-control form-control-sm" name ="price" autocomplete="off">
     </div>
         <label for="exampleFormControlInput1" class="form-label">Category</label>
             <select class="form-select form-select-sm" name="category" aria-label="Default select example">

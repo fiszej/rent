@@ -15,6 +15,7 @@ $cars = $car->showAll();
       <th scope="col">Category</th>
       <th scope="col">Foto</th>
       <th scope="col">Action</th>
+      <th scope="col">Availability</th>
     </tr>
   </thead>
   <tbody>
@@ -29,12 +30,13 @@ $cars = $car->showAll();
         <td><?= $car->cname?> </td>
         <td><i class="<?= $car->foto ? 'bi bi-camera2 text-success' : 'bi bi-camera2 text-danger'?>"></i></td>
         <td>
-            <a href="index.php?admin=show-car&id=<?= $car->id ?>" class="btn btn-success btn-sm">Show</a>
-            <a href="index.php?admin=edit-car&id=<?= $car->id ?>" class="btn btn-info btn-sm">Edit</a>
-            <a href="index.php?admin=delete&page=car&id=<?= $car->id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="index.php?admin=show-car&id=<?= $car->id ?>" class="btn btn-outline-success btn-sm">Show</a>
+            <a href="index.php?admin=edit-car&id=<?= $car->id ?>" class="btn btn-outline-primary btn-sm">Edit</a>
+            <a href="index.php?admin=delete&page=car&id=<?= $car->id ?>" class="btn btn-outline-danger btn-sm">Delete</a>
         </td>
+        <td><i class="<?= ($car->status == 1) ? 'bi bi-truck text-success' : 'bi bi-truck text-danger'?>"></i></td>
       </tr>
     <?php endforeach ;?>
   </tbody>
 </table>
-<a href="index.php?admin=add-car" class="btn btn-success btn-sm"> + </a>
+<a href="index.php?admin=add-car" class="btn btn-outline-primary btn-sm"> + </a>

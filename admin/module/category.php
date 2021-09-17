@@ -5,13 +5,18 @@ $result = $category->show();
 
 
 if (array_key_exists('submit', $_POST)) {
+    $error = '';
+    if (!empty($_POST['categoryName'])) {
     $category->name = trim(filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_SPECIAL_CHARS));
     //$category->id = $category->lastId()['category_id'] + 1;
     $category->new();
     header("Location: index.php?admin=category");
+    } else {
+      $error = 'Enter category name';
+    }
 }
 
-if (isset($_GET['action'])) {
+if ($_GET['action'] == 'delete') {
     $id = $_GET['id'];
     $category->delete($id);
     header("Location: index.php?admin=category");
@@ -32,7 +37,7 @@ if (isset($_GET['action'])) {
       <th scope="row"><?= $category->id ?></th>
         <td><?= $category->name ?></td>
         <td>
-            <a href="index.php?admin=category&action=delete&id=<?= $category->id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="index.php?admin=category&action=delete&id=<?= $category->id ?>" class="btn btn-outline-danger btn-sm">Delete</a>
         </td>
       </tr>
     <?php endforeach ;?>
@@ -41,9 +46,10 @@ if (isset($_GET['action'])) {
     <form class="form-inline" action="index.php?admin=category" method="POST">
     <div class="form-group mb-2">
         <div class="col-sm-3">
-            <input type="text" class="form-control" name="categoryName" placeholder="enter category name">
+            <input type="text" class="form-control" name="categoryName" placeholder="enter category name" autocomplete="off">
+            <small class="text-danger"><?= $error;?></small>
         </div>
     </div>
-        <input type="submit" name="submit" class="btn btn-info btn-sm" value="Add New">
+        <input type="submit" name="submit" class="btn btn-outline-primary btn-sm" value="Add New">
     </form>
 

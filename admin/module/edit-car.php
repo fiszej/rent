@@ -51,8 +51,8 @@ if ($_POST['submit']) {
     <div class="form-group">
         <label for="exampleFormControlFile1">Add foto...</label><br>
         <input type="file" class="form-control-file" name="foto" id="exampleFormControlFile1">
-    </div>
+    </div><br>
     <div class="col-12">
-        <input class="btn btn-primary" name="submit" type="submit" value="Add">
+        <input class="btn btn-outline-primary" name="submit" type="submit" value="Add">
     </div>
 </form>

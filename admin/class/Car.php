@@ -9,6 +9,7 @@ class Car
     public $price;
     public $categoryId;
     public $foto;
+    public $status = 1;
 
     private $pdo;
 
@@ -20,13 +21,14 @@ class Car
     public function showAll()
     {
         $sql = "SELECT 
-                cars.id, 
+                cars.id,
                 cars.brand,
                 cars.model,
                 cars.production AS year,
                 cars.price,
                 cars.category,
                 cars.foto,
+                cars.status,
                 category.name AS cname FROM cars
                 INNER JOIN category ON
                 category.id = cars.category";
@@ -44,19 +46,22 @@ class Car
                                     production, 
                                     price, 
                                     category, 
-                                    foto) 
+                                    foto,
+                                    status) 
                             VALUES ( '%s',
                                     '%s',
                                     '%s',
                                     '%s',
                                     %d,
-                                    '%s')",
+                                    '%s', 
+                                    %d)",
                                     $this->brand,
                                     $this->model,
                                     $this->production,
                                     $this->price,
                                     $this->categoryId,
-                                    $this->foto
+                                    $this->foto,
+                                    $this->status
             );
             $stmt = $this->pdo->prepare($sql);
 
@@ -105,12 +110,28 @@ class Car
     public function delete($id)
     {
         try {
-            $sql = "DELETE FROM cars WHERE id = :id";
+            $sql = "DELETE FROM cars WHERE id = $id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function setInactive($id)
+    {
+        $sql = "UPDATE cars SET status = 0 WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+
+    public function setActive($id)
+    {
+        $sql = "UPDATE cars SET status = 1 WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
     }
 }
