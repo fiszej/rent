@@ -14,7 +14,8 @@ if ($_GET['admin'] == 'show-car' && !empty($_GET['id'])) {
         <small><?= $car->cname ?></small>
         
         <img src="<?= CAR_FOTO. $car->foto?>" alt="" width="400px" height="300px"><br><br>
+        <a href="index.php?admin=cars" class="btn btn-outline-primary btn-sm">Back</a>
         <a href="index.php?admin=edit-car&id=<?= $car->id ?>" class="btn btn-outline-primary btn-sm">Edit</a>
-        <a href="index.php?admin=cars" class="btn btn-outline-primary btn-sm">Back</a><br>
+        <a href="index.php?admin=delete&page=car&id=<?= $car->id ?>" class="btn btn-outline-danger btn-sm">Delete</a>
       </div>
 </main>

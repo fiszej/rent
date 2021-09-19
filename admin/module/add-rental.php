@@ -5,12 +5,12 @@ if (isset($_POST['submit'])) {
     $rentals->carID = $_POST['car'];
     $rentals->days = $_POST['days'];
     $rentals->start = $_POST['start'];
-    $rentals->customerID = 1;
+    $rentals->customerID = 108;
 
-    $rentals->save();
-    $car->setInactive($rentals->carID);
-    header("Location: index.php?admin=rentals");
-    
+    if ($rentals->save()) {
+        $car->setInactive($rentals->carID);
+        header("Location: index.php?admin=rentals");
+    }
 
 }
 
@@ -21,10 +21,13 @@ if (isset($_POST['submit'])) {
         <label for="exampleFormControlInput1" class="form-label">Select car</label>
             <select class="form-select form-select-sm" name="car" aria-label="Default select example">
                 <?php foreach ( $cars as $car ):?>
-                    <option value="<?= $car->id ?>">
-                        <?= $car->brand .' '. $car->model. ' - '.$car->year.'r.' ?>
-                    </option>
+                    <?php if ($car->status == 1) :?> 
+                        <option value="<?= $car->id ?>">
+                            <?= $car->brand .' '. $car->model. ' - '.$car->year.'r.' ?>
+                        </option>
+                    <?php endif ;?>
                 <?php endforeach ?>
+                
             </select>
     </div>
     <div class="mb-3">

@@ -30,4 +30,4 @@ $result = $customer->showAll();
     <?php endforeach ;?>
   </tbody>
 </table>
-<a href="index.php?admin=add-customer" class="btn btn-outline-primary btn-sm"> + </a>
+<a href="index.php?admin=add-customer" class="btn btn-outline-primary btn-sm">Add New</a>

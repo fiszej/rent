@@ -32,4 +32,4 @@ $result = $post->showAll();
     <?php endforeach ;?>
   </tbody>
 </table>
-<a href="index.php?admin=add-post" class="btn btn-outline-primary btn-sm"> + </a>
+<a href="index.php?admin=add-post" class="btn btn-outline-primary btn-sm">Add New</a>

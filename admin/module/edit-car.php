@@ -23,7 +23,7 @@ if ($_POST['submit']) {
 ?>
 
 <form action="index.php?admin=add-car" method="POST" enctype="multipart/form-data">
-    <h1 style="text-align: center;">ADD NEW CAR</h1>
+    <h1 style="text-align: center;">EDIT PAGE</h1>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Brand</label>
         <input type="text" class="form-control form-control-sm" value="<?= $row->brand ?>" name ="brand" id="exampleFormControlInput1">

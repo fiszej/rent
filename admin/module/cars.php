@@ -31,12 +31,11 @@ $cars = $car->showAll();
         <td><i class="<?= $car->foto ? 'bi bi-camera2 text-success' : 'bi bi-camera2 text-danger'?>"></i></td>
         <td>
             <a href="index.php?admin=show-car&id=<?= $car->id ?>" class="btn btn-outline-success btn-sm">Show</a>
-            <a href="index.php?admin=edit-car&id=<?= $car->id ?>" class="btn btn-outline-primary btn-sm">Edit</a>
-            <a href="index.php?admin=delete&page=car&id=<?= $car->id ?>" class="btn btn-outline-danger btn-sm">Delete</a>
+
         </td>
         <td><i class="<?= ($car->status == 1) ? 'bi bi-truck text-success' : 'bi bi-truck text-danger'?>"></i></td>
       </tr>
     <?php endforeach ;?>
   </tbody>
 </table>
-<a href="index.php?admin=add-car" class="btn btn-outline-primary btn-sm"> + </a>
+<a href="index.php?admin=add-car" class="btn btn-outline-primary btn-sm">Add New</a>

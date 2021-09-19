@@ -82,4 +82,22 @@ class Customer
             echo $e->getMessage();
         }
     }
+
+    public function customers()
+    {
+        $sql = "SELECT COUNT(*) FROM user";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchColumn();
+    }
+
+    public function readOneForAuth($email)
+    {
+        $sql = "SELECT * FROM user WHERE email = '$email'";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }

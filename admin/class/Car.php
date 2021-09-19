@@ -134,4 +134,52 @@ class Car
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
+
+    public function cars()
+    {
+        $sql = "SELECT COUNT(*) FROM cars";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchColumn();
+    }
+
+    public function available()
+    {
+        $sql = "SELECT COUNT(*) FROM cars WHERE status = 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchColumn();
+    }
+
+    public function avgPrice()
+    {
+        $sql = "SELECT AVG(price) FROM cars";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return floor($stmt->fetchColumn());
+    }
+
+    public function showAllActive()
+    {
+        $sql = "SELECT 
+                cars.id,
+                cars.brand,
+                cars.model,
+                cars.production AS year,
+                cars.price,
+                cars.category,
+                cars.foto,
+                cars.status,
+                category.name AS cname FROM cars
+                INNER JOIN category ON
+                category.id = cars.category
+                WHERE cars.status = 1";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

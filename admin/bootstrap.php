@@ -18,3 +18,4 @@ $rentals = new Rentals($db);
 $car = new Car($db);
 $customer = new Customer($db);
 
+
