@@ -8,6 +8,7 @@ include 'admin/bootstrap.php';
 
 
 if (isset($_GET['v'])) {
+    unset($_SESSION['admin']);
     unset($_SESSION['id']);
     header("Location: index.php");
 }
@@ -19,6 +20,9 @@ if (isset($_POST['submit'])) {
         if ($user && password_verify($_POST['password'], $user->password)) {
             session_start();
             $_SESSION['id'] = $user->id;
+            if ($user->firstname == 'admin') {
+                $_SESSION['admin'] = $user->firstname;
+            }
             header("Location: index.php");
         }
 }

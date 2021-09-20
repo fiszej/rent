@@ -9,7 +9,7 @@ include 'class/Category.php';
 include 'class/Rentals.php';
 include 'class/Car.php';
 include 'class/Customer.php';
-
+include 'class/Page.php';
 
 
 $category = new Category($db);
@@ -17,5 +17,6 @@ $post = new Post($db);
 $rentals = new Rentals($db);
 $car = new Car($db);
 $customer = new Customer($db);
+$page = new Page($db);
 
 

@@ -34,6 +34,10 @@
         <a class="nav-link" <?= $_GET['admin'] == 'category' ? 'style="color: black"' : '' ?>href="index.php?admin=category">Categories</a>
         <a class="nav-link" <?= $_GET['admin'] == 'posts' ? 'style="color: black"' : '' ?>href="index.php?admin=posts">Posts</a>
         <a class="nav-link" <?= $_GET['admin'] == 'newsletter' ? 'style="color: black"' : '' ?>href="index.php?admin=newsletter">Newsletter</a>
+        <?php if ($_SESSION['admin']) :?>
+        <a class="nav-link text-danger" href="index.php?admin=index&v=logout">Logout</a>
+        <?php endif ?>
+
 
     </nav>
     <hr>

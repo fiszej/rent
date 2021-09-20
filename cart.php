@@ -23,9 +23,6 @@ if ($_POST['submit']) {
 }
 
 
-
-
-
 ?>
 
 <section>

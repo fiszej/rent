@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
     if (strlen($_POST['password']) <= 6 && strlen($_POST['password']) >= 12) {
         $errors['len'] = 'Password must be min 6 & max 12 chars!';
     }
-    if (count($customer->readOneForAuth($_POST['email'])) > 0) {
+    if ($customer->readOneForAuth($_POST['email'])) {
         $errors['exists'] = 'Enter another email address';
     }
 

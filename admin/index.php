@@ -1,6 +1,17 @@
 <?php
 
+session_start();
+
 include 'bootstrap.php';
+
+if (!array_key_exists('admin', $_SESSION)) {
+    header("Location: /../index.php");
+}
+if (isset($_GET['v'])) {
+    unset($_SESSION['id']);
+    unset($_SESSION['admin']);
+    header("Location: index.php");
+}
 
 if (array_key_exists('admin', $_GET)) {
     $controller = $_GET['admin'];

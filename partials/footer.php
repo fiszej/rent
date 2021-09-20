@@ -1,3 +1,4 @@
+<?php $page = $page->display() ?>
 
     
     <!-- FOOTER -->
@@ -8,10 +9,10 @@
                     <div class="col-md-4 col-sm-6">
                          <div class="footer-info">
                               <div class="section-title">
-                                   <h2>Headquarter</h2>
+                                   <h2><?= $page->company?></h2>
                               </div>
                               <address>
-                                   <p>212 Barrington Court <br>New York, ABC 10001</p>
+                                   <p><?= $page->address?></p>
                               </address>
 
                               <ul class="social-icon">
@@ -33,8 +34,8 @@
                                    <h2>Contact Info</h2>
                               </div>
                               <address>
-                                   <p>+1 333 4040 5566</p>
-                                   <p><a href="mailto:contact@company.com">contact@company.com</a></p>
+                                   <p><?= $page->tel?></p>
+                                   <p><a href="<?= $page->email?>"><?= $page->email?></a></p>
                               </address>
 
                               <div class="footer_menu">

@@ -1,9 +1,9 @@
-<?php session_start()?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-     <title>Car Rental</title>
+     <title>Rent Car XX</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -49,7 +49,7 @@
                     </button>
 
                     <!-- lOGO TEXT HERE -->
-                    <a href="index.php" class="navbar-brand">Car Rental Website</a>
+                    <a href="index.php" class="navbar-brand">Rent Car XX</a>
                </div>
 
                <!-- MENU LINKS -->
@@ -58,13 +58,15 @@
                          <li class="active"><a href="index.php">Home</a></li>
                          <li><a href="fleet.php">Fleet</a></li>
                          <li><a href="about-us.php">About Us</a></li>
-                         <li><a href="contact.php">Contact Us</a></li>
                          <?php if (!isset($_SESSION['id'])) : ?>
                          <li><a href="register.php">Register</a></li>
                          <li><a href="auth.php">Login</a></li>
                          <?php else: ?>
                          <li><a href="auth.php?v=logout">Logout</a></li>
                          <li><a style="color: red" href="account.php">Account</a></li>
+                         <?php endif ?>
+                         <?php if(isset($_SESSION['admin']) && isset($_SESSION['id'])) : ?>
+                              <li><a style="color: red" target="_blank" href="admin/index.php?admin=index">Admin Dashboard</a></li>
                          <?php endif ?>
                     </ul>
                </div>
