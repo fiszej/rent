@@ -7,6 +7,7 @@
   <li> Rentals</li>
   <li> Login & Registration</li>
   <li> Newsletter</li>
+  <li> Stats page</li>
 
 
 <hr>
