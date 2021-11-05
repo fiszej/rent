@@ -11,6 +11,4 @@
 
 
 <hr>
-www.mbryla89.webd.pro <br>
-admin: admin@o2.pl <br>
-pw: 123456 <br>
+
